@@ -1,5 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
+
 a {
-  font-family: 'Open Sans', sans-serif;
-  font-size:35px;
   color:black !important;
+  }
+
+  .brand-logo, h1{
+    font-family: 'Chelsea Market', cursive;
+    font-size:35px;
+  }
+
+  .mycard{
+    margin-top: 30px;
+  }
+
+  .auth-card{
+    padding:20px;
+    text-align:center;
+    max-width: 400px;
+    margin:10px auto;
   }
