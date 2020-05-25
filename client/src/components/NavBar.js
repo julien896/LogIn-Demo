@@ -30,12 +30,12 @@ const NavBar = () => {
 
        }
     }         
-
+    //to="/"
 
     return ( 
         <nav>
             <div className="nav-wrapper white">
-            <Link to="/" className="brand-logo left">Home</Link>
+            <a href="#" className="brand-logo left">Home</a>
             <ul id="nav-mobile" className="right">
             {renderList()}
             </ul>

@@ -3,7 +3,6 @@ import './App.css';
 import NavBar from './components/NavBar'
 import {BrowserRouter, Route, useHistory} from 'react-router-dom'
 import Home from './components/Screens/Home'
-import Profile from './components/Screens/Profile'
 import Signup from './components/Screens/Signup'
 import Signin from './components/Screens/Signin'
 import {reducer, initialState} from './reducers/userReducer'
@@ -12,12 +11,12 @@ export const UserContext = createContext()
 
 const Routing = () =>{
   const history=useHistory()
-  //const {state,dispatch} = useContext(UserContext)
+  const {state,dispatch} = useContext(UserContext)
   useEffect(() =>{
     const user = JSON.parse(localStorage.getItem("user"))
     if(user){
-    // dispatch({type:"USER", payload:user})
-      history.push('/')
+     dispatch({type:"USER", payload:user})
+      //history.push('/')
     }else{
       history.push('/signin')
     }
@@ -33,9 +32,7 @@ const Routing = () =>{
           <Route path="/signup">
             <Signup/>
           </Route>
-          <Route path="/profile">
-            <Profile/>
-          </Route>
+          
 </Fragment>
   )
 }
