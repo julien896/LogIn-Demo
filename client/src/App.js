@@ -1,18 +1,30 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect, createContext, useReducer, useContext} from 'react';
 import './App.css';
 import NavBar from './components/NavBar'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, useHistory} from 'react-router-dom'
 import Home from './components/Screens/Home'
 import Profile from './components/Screens/Profile'
 import Signup from './components/Screens/Signup'
-import Signin from './components/Screens/Login'
+import Signin from './components/Screens/Signin'
+import {reducer, initialState} from './reducers/userReducer'
 
-function App() {
-  return (
-    <Fragment>
-      <BrowserRouter>
-      <NavBar/>
-        <Route exact path="/">
+export const UserContext = createContext()
+
+const Routing = () =>{
+  const history=useHistory()
+  //const {state,dispatch} = useContext(UserContext)
+  useEffect(() =>{
+    const user = JSON.parse(localStorage.getItem("user"))
+    if(user){
+    // dispatch({type:"USER", payload:user})
+      history.push('/')
+    }else{
+      history.push('/signin')
+    }
+  },[])
+  return(
+<Fragment>
+          <Route exact path="/">
             <Home/>
           </Route>
           <Route path="/signin">
@@ -24,8 +36,21 @@ function App() {
           <Route path="/profile">
             <Profile/>
           </Route>
-        </BrowserRouter>
-    </Fragment>
+</Fragment>
+  )
+}
+
+function App() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  return (
+    <UserContext.Provider value={{state,dispatch}}>
+      <BrowserRouter>
+          <NavBar/>
+          <Routing/>
+        
+      </BrowserRouter>
+      </UserContext.Provider>
+    
   );
 }
 

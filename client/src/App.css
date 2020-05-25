@@ -4,8 +4,8 @@ a {
   color:black !important;
   }
 
-  .brand-logo, h1{
-    font-family: 'Chelsea Market', cursive;
+  h1{
+    font-family: 'Chelsea Market';
     font-size:35px;
   }
 
@@ -19,3 +19,8 @@ a {
     max-width: 400px;
     margin:10px auto;
   }
+  p{
+    font-size:20px;
+    
+   
+    }
